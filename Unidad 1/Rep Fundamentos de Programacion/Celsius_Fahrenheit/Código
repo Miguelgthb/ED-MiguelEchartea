@@ -1,0 +1,25 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Celsius_Fahrenheit
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            double Celsius;
+            Console.Write("Ingrese la opcion: ");
+
+            Celsius = double.Parse(Console.ReadLine());
+            double F = (Celsius * 9 / 5) + 32;
+            Console.WriteLine("Grados Celsius convertidos a Fahrenheit: " + F);
+
+            Console.ReadKey();
+        }
+    }
+}
+
+// Descargar Celsius_Fahrenheit y simplemente ejecutar(Abrir)
