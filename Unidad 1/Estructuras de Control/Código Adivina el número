@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace EstructuraControl_AdivinarNumero
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Random Aleatorio = new Random();
+            int numeroComputadora;
+
+            numeroComputadora = Aleatorio.Next(1, 11);
+
+            
+            Console.WriteLine("**Adivina el número**");
+
+            int numeroUsuario = -1;
+
+            while (numeroUsuario != numeroComputadora)
+            {
+                try
+                {
+                    Console.Write("Ingrese el número del 1 al 10: ");
+                    numeroUsuario = int.Parse(Console.ReadLine());
+
+                    if (numeroUsuario == numeroComputadora)
+                    {
+                        Console.WriteLine($"\nGanaste!!, el numero pensado por la computadora fue {numeroComputadora}");
+                        break;
+                    }else if (numeroUsuario > numeroComputadora)
+                    {
+                        Console.WriteLine($"Intenta de nuevo mas bajo");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Intenta de nuevo mas alto" + "\n");
+                    }
+                }catch (FormatException)
+                {
+                    Console.WriteLine($"Solo Números");
+                }
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
