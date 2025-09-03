@@ -1,0 +1,73 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DeterminaNumeroPrimo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("**Adivina el número**");
+
+            char repetir;
+
+            do
+            {
+                int numeroUsuario = -1;
+                try
+                {
+                    Console.Write("Ingrese un número: ");
+                    numeroUsuario = int.Parse(Console.ReadLine());
+
+                    if (VerificarNumPrimo(numeroUsuario))
+                    {
+                        Console.WriteLine($"El número ingresado es Primo");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"El número ingresado no es Primo");
+                    }
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine($"Solo Números");
+                }
+
+                Console.Write("\n¿Quieres verificar otro número? (S/N): ");
+                repetir = Console.ReadKey().KeyChar;
+                Console.WriteLine();
+            } while (repetir == 'S' || repetir == 's');
+        }
+
+        private static bool VerificarNumPrimo(int nPrimo)
+        {
+            if (nPrimo <= 1) { return false; }
+
+            if (nPrimo == 2) { return true; }
+
+            if (nPrimo % 2 == 0) { return false; }
+
+            // solo se verifican números impares i += 2
+
+            // i * i <= nPrimo si el número divisor, también tiene un divisor igual o menor que su
+            // Así que , no es necesario buscar más.
+
+            for (int i = 3; i * i <= nPrimo; i += 2)
+            {
+                // En cada vuelta del bucle, compruebo si es divisible por i. Entonces el operador
+                // devuelve el resto de la división y si es 0, significa que
+                // no es divisible por i y, entonces no es un número primo.
+                if (nPrimo % i == 0)
+                {
+                    // Si encuentra un divisor, el número no es primo.
+                    return false;
+                }
+            }
+            // Si el bucle termina sin encontrar divisor, el número es primo.
+            return true;
+        }
+    }
+}
