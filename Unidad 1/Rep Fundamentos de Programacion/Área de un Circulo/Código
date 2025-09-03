@@ -1,0 +1,37 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AreaCirculo
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("**Calculadora de Área de Círculo**");
+            double Radio;
+            try
+            {
+                Console.Write("\nIngrese el Radio del círculo: ");
+                Radio = double.Parse(Console.ReadLine());
+
+                if (Radio >= 0)
+                {
+                    double area = Math.PI * Math.Pow(Radio, 2);
+                    Console.WriteLine($"El área del círculo con Radio {Radio} es: {area:F2}");
+                }
+                else
+                {
+                    Console.WriteLine("Error: El Radio no puede ser un número negativo. Inténtelo de nuevo.");
+                }
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Error, solo valores.\n");
+            }
+            Console.ReadKey();
+        }
+    }
+}
