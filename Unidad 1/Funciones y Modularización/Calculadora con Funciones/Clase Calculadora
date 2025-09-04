@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CalculadoraBasica
+{
+    class Calculadora
+    {
+        public double Suma(double SalidaA, double SalidaB)
+        {
+            return SalidaA + SalidaB;
+        }
+
+        public double Resta(double SalidaA, double SalidaB)
+        {
+            return SalidaA - SalidaB;
+        }
+
+        public double Multiplicacion(double SalidaA, double SalidaB)
+        {
+            return SalidaA * SalidaB;
+        }
+
+        public string Division(double SalidaA, double SalidaB)
+        {
+            if (SalidaB == 0)
+            {
+                return "\nNo se puede dividir por cero.";
+            }
+            return (SalidaA / SalidaB).ToString();
+        }
+    }
+}
