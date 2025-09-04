@@ -1,0 +1,61 @@
+// En este ejercicio para la funcion, decidi no usar objetos
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PromedioDeLista
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("PROMEDIO DE UNA LISTA: ");
+            List<double> ListaDeValores = new List<double>();
+            int CantidadNumeros;
+            double CapturarNumeros;
+
+            Console.Write("\nIngrese la cantidad de números: ");
+            try
+            {
+                CantidadNumeros = int.Parse(Console.ReadLine());
+                Console.WriteLine();
+
+                for (int i = 0; i < CantidadNumeros; i++)
+                {
+                    Console.Write($"Ingrese el número {i + 1}: ");
+                    CapturarNumeros = double.Parse(Console.ReadLine());
+                    ListaDeValores.Add(CapturarNumeros);
+                }
+
+                Console.WriteLine($"El promedio de los números en la lista es: {CalcularPromedio(ListaDeValores)}\n");
+            }
+            catch (Exception)
+            {
+                Console.Write("ERROR - EJECUTE DE NUEVO E INGRESE SOLO NUMEROS.\n");
+            }
+            Console.ReadKey();
+        }
+        
+        public static double CalcularPromedio(List<double> miLista)
+        {
+            double Suma = 0;
+            if (miLista == null)
+            {
+                return 0;
+            }
+            else
+            {
+                foreach (double IndexArreglo in miLista)
+                {
+                    Suma += IndexArreglo;
+                }
+            }
+            double promedio = Suma / miLista.Count;
+
+            return promedio;
+        }
+    }
+}
