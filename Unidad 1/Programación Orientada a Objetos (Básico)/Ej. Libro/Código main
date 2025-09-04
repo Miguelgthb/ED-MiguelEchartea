@@ -1,0 +1,29 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ProgramaLibro
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("**PROGRAMA MOSTRAR DATOS DE LIBRO**");
+
+            Libro miLibro = new Libro("", "");
+
+            Console.Write("Ingrese el titulo del libro: ");
+            miLibro.Titulo = Console.ReadLine();
+
+            Console.Write("\nIngrese el autor del libro: ");
+            miLibro.Autor = Console.ReadLine();
+
+            Console.WriteLine("");
+
+            miLibro.MostrarInformacion();
+            Console.ReadKey();
+        }
+    }
+}
