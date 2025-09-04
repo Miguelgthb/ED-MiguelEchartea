@@ -1,0 +1,62 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CalculadoraBasica
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("**CALCULADORA CON FUNCIONES BÁSICAS**");
+            Calculadora MiCalculadora = new Calculadora();
+            int Operacion;
+
+            int Reintentar;
+            do
+            {
+                try
+                {
+                    Console.Write("Digite el primer número: ");
+                    double EntradaValor1 = double.Parse(Console.ReadLine());
+
+                    Console.Write("Digite el segundo número: ");
+                    double EntradaValor2 = double.Parse(Console.ReadLine());
+
+                    Console.WriteLine("Suma [1]\nResta[2]\nMultiplicacion[3]\nDivision[4]");
+                    Console.Write("\nDigite la funcion que desea realizar: ");
+                    Operacion = int.Parse(Console.ReadLine());
+
+                    switch (Operacion)
+                    {
+                        case 1:
+                            Console.WriteLine($"{MiCalculadora.Suma(EntradaValor1, EntradaValor2)}");
+                            break;
+                        case 2:
+                            Console.WriteLine($"{MiCalculadora.Resta(EntradaValor1, EntradaValor2)}");
+                            break;
+                        case 3:
+                            Console.WriteLine($"{MiCalculadora.Multiplicacion(EntradaValor1, EntradaValor2)}");
+                            break;
+                        case 4:
+                            Console.WriteLine($"{MiCalculadora.Division(EntradaValor1, EntradaValor2)}");
+                            break;
+                        default: Console.WriteLine("Opción no válida."); break;
+                    }
+
+                    Console.WriteLine("Para reintentar digite 1\n Para finaliza cualquier otro número.");
+                    Reintentar = int.Parse(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Error. Solo se permiten número.");
+                    Reintentar = 1;
+                }
+            } while (Reintentar == 1);
+
+            Console.ReadKey();
+        }
+    }
+}
