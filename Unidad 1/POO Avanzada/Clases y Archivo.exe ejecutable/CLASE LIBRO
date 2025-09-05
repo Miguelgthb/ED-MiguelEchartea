@@ -1,0 +1,85 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GestionBiblioteca
+{
+    class Libro : IPrestable
+    {
+        private string _strTitulo;
+        public string Titulo
+        {
+            get { return _strTitulo; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    _strTitulo = value;
+                else
+                    throw new ArgumentException("El título no puede estar vacío.");
+            }
+        }
+
+        private string _strAutor;
+        public string Autor
+        {
+            get { return _strAutor; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    _strAutor = value;
+                else
+                    throw new ArgumentException("El autor no puede estar vacío.");
+            }
+        }
+
+        private string _strISBN;
+        public string ISBN
+        {
+            get { return _strISBN; }
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                    _strISBN = value;
+                else
+                    throw new ArgumentException("El ISBN no puede estar vacío.");
+            }
+        }
+
+        public bool Prestado { get; private set; }
+
+        public Libro(string titulo, string autor, string isbn)
+        {
+            this.Titulo = titulo;
+            this.Autor = autor;
+            this.ISBN = isbn;
+            this.Prestado = false;
+        }
+
+        public bool Prestar()
+        {
+            if (!Prestado)
+            {
+                Prestado = true;
+                return true;
+            }
+            return false;
+        }
+
+        public bool Devolver()
+        {
+            if (Prestado)
+            {
+                Prestado = false;
+                return true;
+            }
+            return false;
+        }
+
+        public override string ToString()
+        {
+            return $"{Titulo} - {Autor} (ISBN: {ISBN}) [{(Prestado ? "Prestado" : "Disponible")}]";
+        }
+    }
+}
