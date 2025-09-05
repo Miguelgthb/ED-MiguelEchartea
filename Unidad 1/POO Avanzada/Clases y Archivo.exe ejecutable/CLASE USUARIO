@@ -39,10 +39,5 @@ namespace GestionBiblioteca
             this.Nombre = nombre;
             this.ID = id;
         }
-
-        public override string ToString()
-        {
-            return $"{ID} - {Nombre}";
-        }
     }
 }
