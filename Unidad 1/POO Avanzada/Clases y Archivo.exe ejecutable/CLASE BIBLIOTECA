@@ -1,0 +1,102 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GestionBiblioteca
+{
+    class Biblioteca
+    {
+        private List<Libro> _ListaDeLibros;
+        private List<Usuario> _ListaDeUsuarios;
+
+        public Biblioteca()
+        {
+            _ListaDeLibros = new List<Libro>();
+            _ListaDeUsuarios = new List<Usuario>();
+        }
+
+        public void AgregarLibro(Libro miLibro)
+        {
+            _ListaDeLibros.Add(miLibro);
+        }
+
+        public void RegistrarUsuario(Usuario usuario)
+        {
+            _ListaDeUsuarios.Add(usuario);
+        }
+
+        public string PrestarLibro(string isbn, int usuarioID)
+        {
+            Libro libroAprestar = null;
+            foreach (Libro libro in _ListaDeLibros)
+            {
+                if (libro.ISBN == isbn)
+                {
+                    libroAprestar = libro;
+                    break;
+                }
+            }
+
+            Usuario usuarioPrestamo = null;
+            foreach (Usuario usuario in _ListaDeUsuarios)
+            {
+                if (usuario.ID == usuarioID)
+                {
+                    usuarioPrestamo = usuario;
+                    break;
+                }
+            }
+
+            if (libroAprestar != null && usuarioPrestamo != null)
+            {
+                if (libroAprestar.Prestar())
+                {
+                    return ($"Libro '{libroAprestar.Titulo}' prestado a {usuarioPrestamo.Nombre}.");
+                }
+                else
+                {
+                    return ($"El libro '{libroAprestar.Titulo}' fue prestado a {usuarioPrestamo.Nombre}. \n\nAnes tiene que devolverse");
+                }
+            }
+            else
+            {
+                return ("No se pudo realizar el préstamo. El libro o el usuario no existen.");
+            }
+        }
+
+        public string DevolverLibro(string isbn)
+        {
+            Libro libroADevolver = null;
+            foreach (Libro libro in _ListaDeLibros)
+            {
+                if (libro.ISBN == isbn)
+                {
+                    libroADevolver = libro;
+                    break;
+                }
+            }
+
+            if (libroADevolver != null && libroADevolver.Devolver())
+            {
+                return ($"El libro '{libroADevolver.Titulo}' fue devuelto.");
+            }
+            else
+            {
+                return ("No se pudo devolver el libro (no existe o no estaba prestado).");
+            }
+
+        }
+
+        public List<Libro> ObtenerLibros()
+        {
+            return _ListaDeLibros;
+        }
+
+        public List<Usuario> ObtenerUsuarios()
+        {
+            return _ListaDeUsuarios;
+        }
+    }
+}
