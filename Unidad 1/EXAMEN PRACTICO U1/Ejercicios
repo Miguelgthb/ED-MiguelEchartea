@@ -1,0 +1,57 @@
+#Ejercicio 1
+from string import punctuation
+mi_lista = []
+
+while True:
+  p = input("Ingresa la palabra (Fin para terminar): ")
+  if p.lower() == "fin":
+    break
+  mi_lista.append(p)
+
+print("Incluyendo a la Lista: ", mi_lista)
+print("Cantidad: ", len(mi_lista))
+
+#Ejercicio 3
+from collections import deque
+
+queue = deque(["doc1.pdf", "tarea.docx", "pres.pptx"])
+print(queue.copy())
+print("pop (primero en entrar = primero en salir): ", queue.popleft())
+print(queue)
+queue.append("informe.pdf")
+print(queue)
+
+# Ejercicio 4. Algoritmo O(n) ó busqueda lineal, porque la lista grande de 10,000 alumnos ya esta ordenada.
+# Ejercicio 5. Es muy importante al momento de encontrar un numero de una lista ordenada, uno hace mas iteraciones y otro divide la lista
+# Ejercicio 6. El algoritmo O(n log n), solo hace menos iteraciones y es mucho mas efectiva en una lista desordenada.
+# Ejercicio 7. Hasta el numero 35, y con la version iterativa cualquier numero
+
+#Ejercicio 8
+import time
+import random
+
+# Generar lista ordenada de 100,000 números
+lista_grande = sorted(random.sample(range(10000), 10000))
+
+def busqueda_binaria(lista, objetivo):
+    izquierda, derecha = 0, len(lista)-1
+    while izquierda <= derecha:
+        medio = (izquierda + derecha)
+        if lista[medio] == objetivo:
+            return medio
+        elif lista[medio] < objetivo:
+            izquierda = medio + 1
+        else:
+            derecha = medio - 1
+    return -1
+
+ID = int(input("ID a encontrar: "))
+
+inicio = time.time()
+pss_binaria = busqueda_binaria(lista_grande, ID)
+fin = time.time()
+
+miBusqueda = fin - inicio
+
+print(f"El ID {ID} se encuentra en la {busqueda_binaria(lista_grande, ID)} de la lista.")
+print(f"Tiempo de búsqueda binaria: {miBusqueda} segundos")
