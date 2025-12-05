@@ -5,7 +5,7 @@
 - **Fecha:** [05/12/2025]
 
 ## Ejercicio 1: Sistema de Vuelos
-[Este es un claro ejemplo de un grafo mezclado no dirigido, direccional y bidireccional. Donde los vertices son los paises y las aristas a donde se sirige el vuelo.]
+[Este es un claro ejemplo de un grafo mezclado no dirigido y bidireccional. Donde los vertices son los paises y las aristas a donde se sirige el vuelo.]
 ![Diagrama](ejercicio1/Ej1-diagrama.png)
 
 ## Ejercicio 2: Red de Computadoras
