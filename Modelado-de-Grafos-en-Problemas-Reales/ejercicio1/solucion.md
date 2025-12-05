@@ -4,6 +4,8 @@ Es dirigido, ya que las aristas tienen direccion, Y si es ponderado, porque los 
 
 c) Calcula el grado de entrada y salida de cada ciudad.
 
+Grados de entrada: 
+
 in(México) = 1
 
 in(Cancún) = 1
@@ -13,6 +15,8 @@ in(Monterrey) = 1
 in(Houston) = 1
 
 in(Miami) = 2
+
+Grados de salida:
 
 out(México) = 2
 
